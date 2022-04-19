@@ -496,7 +496,7 @@ class PostSection(TaskSet):
             "body": "This is the body of a randomly titled post"
         }
         headers = {
-            "Authorization": "Token 508e650b0ca1613818939089190a1661a75865b1"
+            "Authorization": f"Token {self.user.login_token}"
         }
         self.client.post("blog/create", json=data, headers=headers)
 
@@ -511,7 +511,7 @@ class PostSection(TaskSet):
             "body": "This is the body of a randomly titled post"
         }
         headers = {
-            "Authorization": "Token 508e650b0ca1613818939089190a1661a75865b1"
+            "Authorization": f"Token {self.user.login_token}"
         }
 
         self.client.post("blog/post/17472/comment/create", json=data, headers=headers)
@@ -581,7 +581,7 @@ class PostSection(TaskSet):
 
     @task
     def post_detail(self):
-        for id in range(12515, 12535):
+        for id in range(20):
             self.client.get(f"blog/post/{id + 1}", name="/blog/post/{id}")
             time.sleep(5)
 
@@ -592,7 +592,7 @@ class PostSection(TaskSet):
             "body": "This is the body of a randomly titled post"
         }
         headers = {
-            "Authorization": "Token 508e650b0ca1613818939089190a1661a75865b1"
+            "Authorization": f"Token {self.user.login_token}"
         }
         self.client.post("blog/create", json=data, headers=headers)
 
@@ -607,10 +607,10 @@ class PostSection(TaskSet):
             "body": "This is the body of a randomly titled post"
         }
         headers = {
-            "Authorization": "Token 508e650b0ca1613818939089190a1661a75865b1"
+            "Authorization": f"Token {self.user.login_token}"
         }
 
-        self.client.post("blog/post/17472/comment/create", json=data, headers=headers)
+        self.client.post("blog/post/1/comment/create", json=data, headers=headers)
 
 
     @task
